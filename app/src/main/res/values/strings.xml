@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">Aplicativo Estácio 2017/02</string>
-    <string name="bemvindo">Bem vindo ao meu aplicativo.</string>
-    <string name="colunaA">Texto da coluna A</string>
-    <string name="colunaB">Texto da coluna B</string>
-    <string name="colunaC">Texto da coluna C</string>
-    <string name="coluna1">Texto da coluna 1</string>
-    <string name="coluna2">Texto da coluna 2</string>
-    <string name="btnOK">OK</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtFone">Fone</string>
+    <string name="txtEmail">Email</string>
+    <string name="btnSalvar">Salvar</string>
 </resources>

@@ -1,10 +1,3 @@
 <resources>
-    <string name="app_name">Aplicativo Estácio 2017/02</string>
-    <string name="bemvindo">Welcome to my app.</string>
-    <string name="colunaA">Text of column A</string>
-    <string name="colunaB">Texto da coluna B</string>
-    <string name="colunaC">Texto da coluna C</string>
-    <string name="coluna1">Texto da coluna 1</string>
-    <string name="coluna2">Texto da coluna 2</string>
-    <string name="btnOK">OK</string>
+
 </resources>
