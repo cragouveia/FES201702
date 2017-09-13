@@ -45,7 +45,6 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
     private ContentValues getContentValues(Aluno aluno) {
         ContentValues values = new ContentValues();
-        values.put("id", aluno.getId());
         values.put("nome", aluno.getNome());
         values.put("fone", aluno.getFone());
         values.put("email",  aluno.getEmail());
