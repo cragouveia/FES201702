@@ -54,17 +54,13 @@ public class FormAluno extends AppCompatActivity {
 
                 dao = new AlunoDAO(FormAluno.this);
                 dao.insert(aluno);
-                List<Aluno> alunos = dao.list();
-                for (Aluno a: alunos) {
-                    Toast.makeText(FormAluno.this, String.format("Aluno %s", a.getNome()),
-                            Toast.LENGTH_SHORT).show();
-                }
                 dao.close();
 
                 Toast.makeText(FormAluno.this,
                         String.format("Registro para o aluno %s inserido com sucesso.",
                                 edtNome.getText()),
                         Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
