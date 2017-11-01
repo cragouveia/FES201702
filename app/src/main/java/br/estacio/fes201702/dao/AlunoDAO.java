@@ -18,7 +18,7 @@ import br.estacio.fes201702.domain.Aluno;
 public class AlunoDAO extends SQLiteOpenHelper {
 
     private static final String DATABASE = "aluno.db";
-    private static final int VERSION = 1;
+    private static final int VERSION = 4;
     private static final String TABLE = "aluno";
 
     public AlunoDAO(Context context) {
@@ -32,13 +32,27 @@ public class AlunoDAO extends SQLiteOpenHelper {
                 "id integer primary key autoincrement, " +
                 "nome text not null, " +
                 "fone text not null, " +
-                "email text not null)";
+                "email text not null," +
+                "endereco text, "+
+                "estadocivil text," +
+                "sexo text)";
         db.execSQL(ddlAluno);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        if (oldVersion == 1 && newVersion >= 2) {
+            String adicionarEndereco = "alter table aluno add endereco text";
+            db.execSQL(adicionarEndereco);
+        }
+        if (oldVersion <= 2 && newVersion >= 3) {
+            String adicionarEstadoCivil = "alter table aluno add estadocivil text";
+            db.execSQL(adicionarEstadoCivil);
+        }
+        if (oldVersion <= 3 && newVersion >= 4) {
+            String adicionarSexo = "alter table aluno add sexo text";
+            db.execSQL(adicionarSexo);
+        }
     }
 
     private ContentValues getContentValues(Aluno aluno) {
@@ -46,6 +60,9 @@ public class AlunoDAO extends SQLiteOpenHelper {
         values.put("nome", aluno.getNome());
         values.put("fone", aluno.getFone());
         values.put("email",  aluno.getEmail());
+        values.put("endereco",  aluno.getEndereco());
+        values.put("estadocivil",  aluno.getEstadoCivil());
+        values.put("sexo",  aluno.getSexo());
         return values;
     }
 
@@ -87,6 +104,9 @@ public class AlunoDAO extends SQLiteOpenHelper {
         aluno.setNome(c.getString(c.getColumnIndex("nome")));
         aluno.setFone(c.getString(c.getColumnIndex("fone")));
         aluno.setEmail(c.getString(c.getColumnIndex("email")));
+        aluno.setEndereco(c.getString(c.getColumnIndex("endereco")));
+        aluno.setEstadoCivil(c.getString(c.getColumnIndex("estadocivil")));
+        aluno.setSexo(c.getString(c.getColumnIndex("sexo")));
         return aluno;
     }
 

@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Aplicativo Estácio 2017/02</string>
     <string name="txtNome">Nome</string>
+    <string name="txtEndereco">Endereço</string>
     <string name="txtFone">Fone</string>
     <string name="txtEmail">Email</string>
+    <string name="txtEstadoCivil">Estado Civil</string>
+    <string name="txtSexo">Sexo</string>
     <string name="btnSalvar">Salvar</string>
 </resources>

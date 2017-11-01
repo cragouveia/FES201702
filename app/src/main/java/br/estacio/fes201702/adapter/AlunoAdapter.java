@@ -28,7 +28,7 @@ public class AlunoAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Aluno getItem(int position) {
         return listaAlunos.get(position);
     }
 
