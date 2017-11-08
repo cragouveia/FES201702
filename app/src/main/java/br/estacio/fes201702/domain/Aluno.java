@@ -1,6 +1,7 @@
 package br.estacio.fes201702.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 /**
  * Created by carlos on 12/09/17.
@@ -15,6 +16,8 @@ public class Aluno implements Serializable{
     private String endereco;
     private String estadoCivil;
     private String sexo;
+    private Calendar dataNasc;
+
 
     public int getId() {
         return id;
@@ -70,6 +73,14 @@ public class Aluno implements Serializable{
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public Calendar getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Calendar dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     @Override

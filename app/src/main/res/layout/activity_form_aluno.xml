@@ -62,6 +62,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerSexo"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtDataNasc"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtDataNasc"/>
+
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="match_parent"

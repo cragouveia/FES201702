@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import br.estacio.fes201702.domain.Aluno;
@@ -18,13 +21,16 @@ import br.estacio.fes201702.domain.Aluno;
 public class AlunoDAO extends SQLiteOpenHelper {
 
     private static final String DATABASE = "aluno.db";
-    private static final int VERSION = 4;
+    private static final int VERSION = 5;
     private static final String TABLE = "aluno";
 
     public AlunoDAO(Context context) {
         super(context, DATABASE, null, VERSION);
     }
 
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    private Calendar calendar;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -35,7 +41,8 @@ public class AlunoDAO extends SQLiteOpenHelper {
                 "email text not null," +
                 "endereco text, "+
                 "estadocivil text," +
-                "sexo text)";
+                "sexo text," +
+                "datanasc integer)";
         db.execSQL(ddlAluno);
     }
 
@@ -53,6 +60,10 @@ public class AlunoDAO extends SQLiteOpenHelper {
             String adicionarSexo = "alter table aluno add sexo text";
             db.execSQL(adicionarSexo);
         }
+        if (oldVersion <= 4 && newVersion >= 5) {
+            String adicionarDataNasc = "alter table aluno add datanasc integer";
+            db.execSQL(adicionarDataNasc);
+        }
     }
 
     private ContentValues getContentValues(Aluno aluno) {
@@ -63,6 +74,7 @@ public class AlunoDAO extends SQLiteOpenHelper {
         values.put("endereco",  aluno.getEndereco());
         values.put("estadocivil",  aluno.getEstadoCivil());
         values.put("sexo",  aluno.getSexo());
+        values.put("datanasc", dateFormat.format(aluno.getDataNasc().getTime()));
         return values;
     }
 
@@ -107,6 +119,14 @@ public class AlunoDAO extends SQLiteOpenHelper {
         aluno.setEndereco(c.getString(c.getColumnIndex("endereco")));
         aluno.setEstadoCivil(c.getString(c.getColumnIndex("estadocivil")));
         aluno.setSexo(c.getString(c.getColumnIndex("sexo")));
+        calendar = Calendar.getInstance();
+        try {
+            calendar.setTime(dateFormat.parse(c.getString(c.getColumnIndex("datanasc"))));
+        }
+        catch (Exception e) {
+            calendar.setTime(new Date());
+        }
+        aluno.setDataNasc(calendar);
         return aluno;
     }
 

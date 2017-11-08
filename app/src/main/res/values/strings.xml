@@ -6,5 +6,6 @@
     <string name="txtEmail">Email</string>
     <string name="txtEstadoCivil">Estado Civil</string>
     <string name="txtSexo">Sexo</string>
+    <string name="txtDataNasc">Data Nasc.</string>
     <string name="btnSalvar">Salvar</string>
 </resources>
